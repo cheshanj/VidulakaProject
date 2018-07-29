@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="seminar_history" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="91bbabef-77e1-47af-8788-c0fb7d2eed9b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     seminar.`semTitle` AS seminar_semTitle,
+     seminar.`Lecturer` AS seminar_Lecturer,
+     seminar.`venue` AS seminar_venue,
+     seminar.`date` AS seminar_date,
+     seminar.`totalStudents` AS seminar_totalStudents,
+     seminar.`estimatedCost` AS seminar_estimatedCost,
+     seminar.`semStatus` AS seminar_semStatus
+FROM
+     `seminar` seminar]]>
+	</queryString>
+	<field name="seminar_semTitle" class="java.lang.String"/>
+	<field name="seminar_Lecturer" class="java.lang.String"/>
+	<field name="seminar_venue" class="java.lang.String"/>
+	<field name="seminar_date" class="java.sql.Date"/>
+	<field name="seminar_totalStudents" class="java.lang.Integer"/>
+	<field name="seminar_estimatedCost" class="java.lang.Double"/>
+	<field name="seminar_semStatus" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="1d6facbe-621d-45ce-875e-ccf1ee0a6e87"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Seminar History]]></text>
+			</staticText>
+			<image>
+				<reportElement x="263" y="13" width="282" height="48" uuid="96cb6947-8d7e-4d3a-87ae-15aba7e40869"/>
+				<imageExpression><![CDATA["C:\\Users\\Sumudu Malshan\\Desktop\\logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="bb7f9631-f60f-4c79-9fd2-10860ba19226"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="79" height="15" uuid="076314c4-aed5-42ef-84f4-b56d1616fae6"/>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="79" y="19" width="79" height="15" uuid="edded080-1e7b-4d4b-a131-5f1c8a8dfc07"/>
+				<text><![CDATA[Lecturerr]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="158" y="19" width="79" height="15" uuid="d2c7da76-5164-4915-bf54-48be0546c07b"/>
+				<text><![CDATA[Venue]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="237" y="19" width="79" height="15" uuid="6193d673-dd9b-4f09-b360-8c17121920a3"/>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="316" y="19" width="79" height="15" uuid="c33e2b54-9f76-4c68-8b7f-3c55909ee514"/>
+				<text><![CDATA[Total Students]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="395" y="19" width="107" height="15" uuid="e3420089-f9b9-46df-a4b1-d26b7ae463aa"/>
+				<text><![CDATA[Estimated Cost]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="502" y="19" width="51" height="15" uuid="ed96d213-96d7-4a06-8434-206efe7038cc"/>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="7e8e8d02-2354-4402-bd42-49820fc5cfb3"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="79" height="15" uuid="84afb504-6358-48ff-a0f8-2c7e3c82e508"/>
+				<textFieldExpression><![CDATA[$F{seminar_semTitle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="79" y="0" width="79" height="15" uuid="988d4f33-868c-445b-ae60-f18b4fb53539"/>
+				<textFieldExpression><![CDATA[$F{seminar_Lecturer}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="158" y="0" width="79" height="15" uuid="7853f9ec-b95b-4079-8e5d-a82b2a60852e"/>
+				<textFieldExpression><![CDATA[$F{seminar_venue}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="237" y="0" width="79" height="15" uuid="208b90c4-6b39-4e54-802a-8655de68da2e"/>
+				<textFieldExpression><![CDATA[$F{seminar_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="316" y="0" width="79" height="15" uuid="c58ac086-0e79-44da-b7a3-9a5a1e046ab5"/>
+				<textFieldExpression><![CDATA[$F{seminar_totalStudents}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="395" y="0" width="79" height="15" uuid="b8073f09-a8a7-45a9-a9c5-df13bb693e39"/>
+				<textFieldExpression><![CDATA[$F{seminar_estimatedCost}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="502" y="0" width="51" height="15" uuid="1ed65951-b17e-4372-8115-d416a35caaed"/>
+				<textFieldExpression><![CDATA[$F{seminar_semStatus}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="5e38df81-bd6a-411b-b662-fe1b2c3c4173"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="2f6aece7-7aa9-4fb5-86f2-9f905dea18ba"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="20af40f2-2464-41c7-b5bf-eeb5dd7e0247"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="daa2e2f9-6e23-4865-91c6-37b8c819b4be"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

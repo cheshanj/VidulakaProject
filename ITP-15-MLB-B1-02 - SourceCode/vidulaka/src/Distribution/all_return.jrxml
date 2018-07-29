@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="all_return" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5310ec4f-57e6-4044-be6d-2dd9d39cc54f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     returns.`reID` AS returns_reID,
+     returns.`agentID` AS returns_agentID,
+     returns.`productID` AS returns_productID,
+     returns.`amount` AS returns_amount,
+     returns.`date` AS returns_date,
+     returns.`disID` AS returns_disID,
+     returns.`paidAmount` AS returns_paidAmount
+FROM
+     `returns` returns]]>
+	</queryString>
+	<field name="returns_reID" class="java.lang.Integer"/>
+	<field name="returns_agentID" class="java.lang.Integer"/>
+	<field name="returns_productID" class="java.lang.String"/>
+	<field name="returns_amount" class="java.lang.Integer"/>
+	<field name="returns_date" class="java.lang.String"/>
+	<field name="returns_disID" class="java.lang.Integer"/>
+	<field name="returns_paidAmount" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="c2539561-1c27-4d47-ad18-34788834fd34"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Returns]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="100" y="46" width="174" height="22" uuid="718cfd76-f84e-4695-8763-ff9147302c25"/>
+				<text><![CDATA[All returns details]]></text>
+			</staticText>
+			<image>
+				<reportElement x="349" y="0" width="206" height="48" uuid="1da000d7-e754-425d-b0e2-ab947b18af2d"/>
+				<imageExpression><![CDATA["C:\\Users\\Sumudu Malshan\\Desktop\\logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="33e603d2-2543-431c-8198-ddd9f4632205"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="79" height="15" uuid="1bca8bfb-f3ad-4765-92c6-e5f13948ea99"/>
+				<text><![CDATA[Returns ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="79" y="19" width="79" height="15" uuid="afdd6bbd-619f-4891-bbba-d5dc30258c84"/>
+				<text><![CDATA[Agent ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="158" y="19" width="79" height="15" uuid="33bbc2e8-e8bb-4f7b-b4e5-c5a898274ca5"/>
+				<text><![CDATA[Product ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="237" y="19" width="79" height="15" uuid="b4b468fb-793c-4900-83fa-8261835f5217"/>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="316" y="19" width="79" height="15" uuid="f6455018-0768-444b-9ea4-032916f17c6b"/>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="381" y="20" width="93" height="15" uuid="843cb8fc-c8e0-4e16-aba5-a21b23f48273"/>
+				<text><![CDATA[Distribution ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="476" y="19" width="79" height="15" uuid="90bc02f2-9200-4bdc-8ec4-a288a50e3b29"/>
+				<text><![CDATA[Amount Paid]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="77ee73bc-29be-4aed-84af-699750a682ff"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="79" height="15" uuid="75166f9e-563b-46a9-b304-e3e8caa60d66"/>
+				<textFieldExpression><![CDATA[$F{returns_reID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="79" y="0" width="79" height="15" uuid="4ab46cd9-70e5-41a1-883b-272b5f0a7eee"/>
+				<textFieldExpression><![CDATA[$F{returns_agentID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="158" y="0" width="79" height="15" uuid="377d2c45-b6e4-4fe8-bdd1-df1917863653"/>
+				<textFieldExpression><![CDATA[$F{returns_productID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="237" y="0" width="79" height="15" uuid="b4f2c7b6-712e-4f8f-bbb5-066ecf92aa40"/>
+				<textFieldExpression><![CDATA[$F{returns_amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="316" y="0" width="79" height="15" uuid="28ed10fa-4310-460d-9073-7da70aa5e6f3"/>
+				<textFieldExpression><![CDATA[$F{returns_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="395" y="0" width="79" height="15" uuid="676ca520-a0c2-4560-82a3-0d1429b5cc2c"/>
+				<textFieldExpression><![CDATA[$F{returns_disID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="474" y="1" width="79" height="15" uuid="bcd88ed1-5689-45d0-9a40-1cfb218b0e8d"/>
+				<textFieldExpression><![CDATA[$F{returns_paidAmount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="e544d0cc-d64c-40d5-be52-29702498e640"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="09a078e7-49b8-4b9b-b8ec-25ffb5d7abf0"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="10eb888a-02c8-43f3-a72a-181dbcb2e360"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="e8338b46-7747-4b1f-8977-864713a47a2a"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

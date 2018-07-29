@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="agent_single" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="393c0cea-fdac-40b3-843c-773891b4ff05">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="agent" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+     agent.`agID` AS agent_agID,
+     agent.`agFname` AS agent_agFname,
+     agent.`agLname` AS agent_agLname,
+     shop.`shopID` AS shop_shopID,
+     shop.`shopName` AS shop_shopName,
+     shop.`address` AS shop_address,
+     shop.`phone` AS shop_phone,
+     shop.`agentID` AS shop_agentID
+FROM
+     `agent` agent INNER JOIN `shop` shop ON agent.`agID` = shop.`agentID`
+WHERE
+	agent.`agID` = $P{agent}]]>
+	</queryString>
+	<field name="agent_agID" class="java.lang.Integer"/>
+	<field name="agent_agFname" class="java.lang.String"/>
+	<field name="agent_agLname" class="java.lang.String"/>
+	<field name="shop_shopID" class="java.lang.Integer"/>
+	<field name="shop_shopName" class="java.lang.String"/>
+	<field name="shop_address" class="java.lang.String"/>
+	<field name="shop_phone" class="java.lang.String"/>
+	<field name="shop_agentID" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="0d0a5ef4-ead7-45ed-a12d-305489d866d2"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Agents]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="100" y="46" width="174" height="22" uuid="13fb9700-4efa-4ae8-96cf-3b8b12f81343"/>
+				<text><![CDATA[Agent and shop]]></text>
+			</staticText>
+			<image>
+				<reportElement x="352" y="0" width="201" height="38" uuid="36eb9122-9543-4f1a-b05e-a423273950c9"/>
+				<imageExpression><![CDATA["C:\\Users\\Sumudu Malshan\\Desktop\\logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="5930676f-da25-4df8-bf37-366aed51f899"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="69" height="15" uuid="82b6842e-d2e0-4054-9718-37fe6a07f0de"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="69" y="19" width="85" height="15" uuid="e6ecf7f5-1ecc-4901-b7e6-5efc9a2721b2"/>
+				<text><![CDATA[First Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="154" y="19" width="90" height="15" uuid="0011fd5a-c9a5-404a-ab0b-97668052f018"/>
+				<text><![CDATA[Last Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="244" y="19" width="69" height="15" uuid="a06d4cdc-9d91-4940-af07-eaf20e2a7d4f"/>
+				<text><![CDATA[Shop ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="313" y="19" width="102" height="15" uuid="dd6f824b-4241-41eb-9688-50c42d2b5aec"/>
+				<text><![CDATA[Shop Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="415" y="19" width="69" height="15" uuid="a693a779-9c52-408c-b7d5-7c38e83323b0"/>
+				<text><![CDATA[Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="484" y="19" width="69" height="15" uuid="029a818f-7e8f-4b26-b08c-af9ce38cd376"/>
+				<text><![CDATA[Phone]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="ada307ab-865f-4d8d-b8b4-8553a62a1b2c"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="69" height="15" uuid="edbbd45d-557a-42bc-abd2-0c7304017eb2"/>
+				<textFieldExpression><![CDATA[$F{agent_agID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="69" y="0" width="85" height="15" uuid="48648d62-c1c0-4d8b-b2d9-8fa60c62459e"/>
+				<textFieldExpression><![CDATA[$F{agent_agFname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="154" y="0" width="90" height="15" uuid="f71ea2b1-9875-423d-98b1-1eb2885ad737"/>
+				<textFieldExpression><![CDATA[$F{agent_agLname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="244" y="0" width="69" height="15" uuid="1418f992-1505-4703-9fbb-ec9bad3fb37d"/>
+				<textFieldExpression><![CDATA[$F{shop_shopID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="313" y="0" width="102" height="15" uuid="199dd026-cebb-42bf-a78d-a1ec5ecf96f3"/>
+				<textFieldExpression><![CDATA[$F{shop_shopName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="415" y="0" width="69" height="15" uuid="9be220aa-3e47-4f19-bf2b-b2444439ca05"/>
+				<textFieldExpression><![CDATA[$F{shop_address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="484" y="0" width="69" height="15" uuid="33ab9049-1f38-4f53-a01c-521d269bc3bd"/>
+				<textFieldExpression><![CDATA[$F{shop_phone}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="9185cd48-2348-4e75-b3d7-b73bfbc16e2a"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="d386e1c1-754e-46ee-975f-44a53e76b5b0"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="2df0eed2-6f36-48bc-82be-e1ab34996c3b"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="3d11525b-049c-4eef-a4f4-24697e77bc40"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

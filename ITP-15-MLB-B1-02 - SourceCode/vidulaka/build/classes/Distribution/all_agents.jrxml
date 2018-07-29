@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="all_agents" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2956df31-fc5d-4af6-be2c-c66d72669017">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     agent.`agID` AS agent_agID,
+     agent.`agFname` AS agent_agFname,
+     agent.`agLname` AS agent_agLname,
+     agent.`address` AS agent_address,
+     agent.`phone` AS agent_phone,
+     agent.`email` AS agent_email
+FROM
+     `agent` agent]]>
+	</queryString>
+	<field name="agent_agID" class="java.lang.Integer"/>
+	<field name="agent_agFname" class="java.lang.String"/>
+	<field name="agent_agLname" class="java.lang.String"/>
+	<field name="agent_address" class="java.lang.String"/>
+	<field name="agent_phone" class="java.lang.String"/>
+	<field name="agent_email" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="71908583-2a97-4d94-9535-c14779969c85"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Agents]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="100" y="46" width="174" height="22" uuid="3a26abbc-7422-4cf7-b55d-8eb85ecfe165"/>
+				<text><![CDATA[All agent details]]></text>
+			</staticText>
+			<image>
+				<reportElement x="349" y="0" width="206" height="36" uuid="4e700640-a8b3-486c-853c-7a46975a1e38"/>
+				<imageExpression><![CDATA["C:\\Users\\Sumudu Malshan\\Desktop\\logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="0333449a-3c8e-427a-a0d3-f413bf7849e4"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="92" height="15" uuid="7df59abf-828e-481e-9b89-33c4463b658d"/>
+				<text><![CDATA[agent ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="92" y="19" width="92" height="15" uuid="a4a83fa5-721d-4f61-a04f-bb748f352c8b"/>
+				<text><![CDATA[First Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="184" y="19" width="92" height="15" uuid="46a9d3d1-9e75-4d6f-a3a4-79d3dafdf674"/>
+				<text><![CDATA[Last Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="276" y="19" width="92" height="15" uuid="911f6441-bfcb-4d6b-b8dd-0110001f04a5"/>
+				<text><![CDATA[Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="368" y="19" width="92" height="15" uuid="62ff9288-089b-471e-8d10-5252d0639238"/>
+				<text><![CDATA[Phone]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="460" y="19" width="92" height="15" uuid="e2121473-5ea7-473a-bef2-dca05615e3d5"/>
+				<text><![CDATA[Email]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="f84906cb-a43b-4d73-a010-5e6175f49d02"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="92" height="15" uuid="9a1dcbaa-6df1-4046-b526-7fab8cb2ee74"/>
+				<textFieldExpression><![CDATA[$F{agent_agID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="92" y="0" width="92" height="15" uuid="36a479e2-1eab-401d-a44f-a269910836cd"/>
+				<textFieldExpression><![CDATA[$F{agent_agFname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="184" y="0" width="92" height="15" uuid="57859a18-b812-42db-95ac-ea1789f41464"/>
+				<textFieldExpression><![CDATA[$F{agent_agLname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="276" y="0" width="92" height="15" uuid="c4a419a2-6b14-475d-af8d-8debbc895aaa"/>
+				<textFieldExpression><![CDATA[$F{agent_address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="368" y="0" width="92" height="15" uuid="b824eab3-52f2-42e0-8a8a-df1d73d2fcfc"/>
+				<textFieldExpression><![CDATA[$F{agent_phone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="460" y="0" width="92" height="15" uuid="5a0bc4ce-7472-4354-bfa3-1d68cc017354"/>
+				<textFieldExpression><![CDATA[$F{agent_email}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="61293599-3317-4a4b-8ec6-5a21f720cb16"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="c1ec35bb-fb10-4477-b039-7da528883571"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="45be3976-6c78-4632-bfa3-0d9922396962"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="7deeaa11-3d3d-40de-8304-a08cb805a218"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

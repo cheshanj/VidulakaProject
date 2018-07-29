@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="243f816b-eff6-4bc1-978f-28f781d9018d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     orders.`orderID` AS orders_orderID,
+     orders.`pid` AS orders_pid,
+     orders.`orderDate` AS orders_orderDate,
+     orders.`dueDate` AS orders_dueDate,
+     orders.`quantity` AS orders_quantity,
+     orders.`checkStatus` AS orders_checkStatus,
+     orders.`printingStatus` AS orders_printingStatus
+FROM
+     `orders` orders]]>
+	</queryString>
+	<field name="orders_orderID" class="java.lang.Integer"/>
+	<field name="orders_orderDate" class="java.sql.Date"/>
+	<field name="orders_dueDate" class="java.sql.Date"/>
+	<field name="orders_quantity" class="java.lang.Integer"/>
+	<field name="orders_checkStatus" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="339" y="0" width="216" height="36" uuid="90f6a55c-046f-487c-8a24-c3919b9ace83"/>
+				<imageExpression><![CDATA["C:\\Users\\Sumudu Malshan\\Desktop\\logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="332bc6b9-eec7-4aae-a4d1-213da8a57a17"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="111" height="15" uuid="0bd9323b-3f96-4e7c-a4cb-11351c3f6e3d"/>
+				<text><![CDATA[Order ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="111" y="19" width="111" height="15" uuid="8aad8936-6678-46a8-b237-736595116317"/>
+				<text><![CDATA[Order Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="222" y="19" width="111" height="15" uuid="c3b3420c-e631-405b-8f39-ecd1ceed82df"/>
+				<text><![CDATA[Due Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="333" y="19" width="111" height="15" uuid="dcbcd830-94e1-457a-b03f-0648a0213845"/>
+				<text><![CDATA[Quantity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="444" y="19" width="111" height="15" uuid="79208495-8b0c-4014-840a-1fbe48a0311e"/>
+				<text><![CDATA[check Status]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="c3e7a50a-e467-45d3-8af3-5d0ae6d6670f"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="111" height="15" uuid="42678796-3b0d-4c3e-b768-0b66454bb529"/>
+				<textFieldExpression><![CDATA[$F{orders_orderID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="111" y="0" width="111" height="15" uuid="26e55bb2-0e30-4283-8400-9c1ef72c1936"/>
+				<textFieldExpression><![CDATA[$F{orders_orderDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="222" y="0" width="111" height="15" uuid="ed1d7660-728f-475f-bb78-f64b97f5048a"/>
+				<textFieldExpression><![CDATA[$F{orders_dueDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="333" y="0" width="111" height="15" uuid="a97fc9e5-5dd5-40bc-8eed-16f88d6591d1"/>
+				<textFieldExpression><![CDATA[$F{orders_quantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="444" y="0" width="111" height="15" uuid="08f4806f-9fc0-450e-b0dd-a84e63ca9e7e"/>
+				<textFieldExpression><![CDATA[$F{orders_checkStatus}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="344dd1f7-07ca-41d9-9e9b-8ed593f3bb96"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="4f4b7ff2-7c7f-4a82-b039-9f219475af9b"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="c7eb6e3b-4af3-4598-ae29-31b5f8bd20f0"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="146e407d-0b09-4757-b531-0fde225c301a"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

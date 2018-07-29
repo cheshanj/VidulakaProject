@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ParcellBill" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d8f531b0-0a67-46fd-bc3f-21609cf08e38">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="tenderId" class="java.lang.Integer"/>
+	<parameter name="schoolId" class="java.lang.Integer"/>
+	<parameter name="provinceId" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+     school_paper_count.`countID` AS school_paper_count_countID,
+     school_paper_count.`tenderID` AS school_paper_count_tenderID,
+     school_paper_count.`schoolID` AS school_paper_count_schoolID,
+     school_paper_count.`grade` AS school_paper_count_grade,
+     school_paper_count.`subject` AS school_paper_count_subject,
+     school_paper_count.`amount` AS school_paper_count_amount,
+     school.`schoolID` AS school_schoolID,
+     school.`name` AS school_name,
+     school.`address` AS school_address,
+     school.`principle` AS school_principle,
+     school.`provinceID` AS school_provinceID,
+     school.`email` AS school_email,
+     school.`phone` AS school_phone,
+     school.`division` AS school_division,
+     province.`prID` AS province_prID,
+     province.`name` AS province_name,
+     province.`addressLine1` AS province_addressLine1,
+     province.`addressLine2` AS province_addressLine2,
+     province.`phone` AS province_phone,
+     province.`email` AS province_email,
+     province.`totalSchool` AS province_totalSchool
+FROM
+     `school` school INNER JOIN `school_paper_count` school_paper_count ON school.`schoolID` = school_paper_count.`schoolID`
+     INNER JOIN `province` province ON school.`provinceID` = province.`prID`
+
+where school_paper_count.tenderId=$P{tenderId} and school_paper_count.schoolId=$P{schoolId} and province.prID=$P{provinceId}]]>
+	</queryString>
+	<field name="school_paper_count_countID" class="java.lang.Integer"/>
+	<field name="school_paper_count_tenderID" class="java.lang.Integer"/>
+	<field name="school_paper_count_schoolID" class="java.lang.Integer"/>
+	<field name="school_paper_count_grade" class="java.lang.Integer"/>
+	<field name="school_paper_count_subject" class="java.lang.String"/>
+	<field name="school_paper_count_amount" class="java.lang.Integer"/>
+	<field name="school_schoolID" class="java.lang.Integer"/>
+	<field name="school_name" class="java.lang.String"/>
+	<field name="school_address" class="java.lang.String"/>
+	<field name="school_principle" class="java.lang.String"/>
+	<field name="school_provinceID" class="java.lang.Integer"/>
+	<field name="school_email" class="java.lang.String"/>
+	<field name="school_phone" class="java.lang.String"/>
+	<field name="school_division" class="java.lang.String"/>
+	<field name="province_prID" class="java.lang.Integer"/>
+	<field name="province_name" class="java.lang.String"/>
+	<field name="province_addressLine1" class="java.lang.String"/>
+	<field name="province_addressLine2" class="java.lang.String"/>
+	<field name="province_phone" class="java.lang.String"/>
+	<field name="province_email" class="java.lang.String"/>
+	<field name="province_totalSchool" class="java.lang.Integer"/>
+	<title>
+		<band height="427" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="274" y="0" width="263" height="33" uuid="1951b1b9-231d-48bb-a710-01df480e0f38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="26" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Parcel Bill]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="55" y="3" width="184" height="30" uuid="219a928c-c1c7-462a-ace6-bfc90a419b4e"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{province_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="219" y="70" width="119" height="41" uuid="607f8fa2-bf94-4532-8ea7-00d0fdac0195"/>
+				<textElement>
+					<font size="22"/>
+				</textElement>
+				<text><![CDATA[School      -]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="384" y="70" width="245" height="41" uuid="5d1cf6a6-f41c-45ed-9872-4b1b25fb4dde"/>
+				<textElement>
+					<font size="22"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{school_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="14" y="174" width="144" height="34" uuid="56f26b43-ca4f-4752-bb53-044d0adcba5a"/>
+				<textElement>
+					<font size="22"/>
+				</textElement>
+				<text><![CDATA[Grade          -]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="207" y="174" width="204" height="34" uuid="c47373fb-49e5-4aa4-b05b-0e8470615169"/>
+				<textElement>
+					<font size="22"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{school_paper_count_grade}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="14" y="268" width="139" height="36" uuid="de60c4b1-1da4-4848-bcb1-2945694bf168"/>
+				<textElement>
+					<font size="22"/>
+				</textElement>
+				<text><![CDATA[Subject        -]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="207" y="268" width="204" height="36" uuid="89dc4d77-c333-448b-8ebc-b05d32c71a4f"/>
+				<textElement>
+					<font size="22"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{school_paper_count_subject}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="14" y="359" width="183" height="31" uuid="17cd5587-b502-4aab-bf1e-587a01d35bd2"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Number of Papers]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="207" y="359" width="204" height="31" uuid="61ac94c0-3aaf-402a-9f99-f927ea6cb16d"/>
+				<textElement>
+					<font size="22"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{school_paper_count_amount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="484" y="303" width="145" height="26" uuid="080d9045-fff5-4aec-b4e7-828debdb2d80"/>
+				<textElement>
+					<font size="22"/>
+				</textElement>
+				<text><![CDATA[Address      ]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="484" y="355" width="282" height="35" uuid="c66523b5-0b31-47a4-b956-7727e204dc80"/>
+				<textElement>
+					<font size="22"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{school_address}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="575" y="0" width="227" height="46" uuid="0ed6b7f6-1ad9-4013-af36-3866d5e961f0"/>
+				<imageExpression><![CDATA["C:\\Users\\Sumudu Malshan\\Desktop\\logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+</jasperReport>
